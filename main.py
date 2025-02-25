@@ -50,19 +50,10 @@ while running:
     ll_spn = f'll={l1},{l2}&z={spn1}&size=600,450'
     map_request = f"{server_address}{ll_spn}&apikey={api_key}"
     response = requests.get(map_request)
-    if not response:
-        print("Ошибка выполнения запроса:")
-        print(map_request)
-        print("Http статус:", response.status_code, "(", response.reason, ")")
-        sys.exit(1)
-
-    # Запишем полученное изображение в файл.
     map_file = "map.png"
     with open(map_file, "wb") as file:
         file.write(response.content)
-    # Рисуем картинку, загружаемую из только что созданного файла.
     screen.blit(pygame.image.load(map_file), (0, 0))
-    # Переключаем экран и ждем закрытия окна.
     pygame.display.flip()
 pygame.quit()
 
