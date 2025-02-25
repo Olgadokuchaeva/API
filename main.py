@@ -12,9 +12,7 @@ l1 = float(input())
 l2 = float(input())
 
 spn1 = int(input())
-ll_spn = f'll={l1},{l2}&spn={spn1}'
-# Готовим запрос.
-
+ll_spn = f'll={l1},{l2}&z={spn1}&size=600,450'
 map_request = f"{server_address}{ll_spn}&apikey={api_key}"
 response = requests.get(map_request)
 
@@ -49,34 +47,15 @@ while running:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 l1 -= LON_STEP * math.pow(2, 15 - spn1)
-                ll_spn = f'll={l1},{l2}&spn={spn1}'
-                map_request = f"{server_address}{ll_spn}&apikey={api_key}"
-                response = requests.get(map_request)
-                map_file = "map.png"
-                with open(map_file, "wb") as file:
-                    file.write(response.content)
-                screen.blit(pygame.image.load(map_file), (0, 0))
             elif event.key == pygame.K_RIGHT:
                 l1 += LON_STEP * math.pow(2, 15 - spn1)
-                ll_spn = f'll={l1},{l2}&spn={spn1}'
-                map_request = f"{server_address}{ll_spn}&apikey={api_key}"
-                response = requests.get(map_request)
-                map_file = "map.png"
-                with open(map_file, "wb") as file:
-                    file.write(response.content)
-                screen.blit(pygame.image.load(map_file), (0, 0))
             elif event.key == pygame.K_UP:
                 l2 += LAT_STEP * math.pow(2, 15 - spn1)
-                ll_spn = f'll={l1},{l2}&spn={spn1}'
-                map_request = f"{server_address}{ll_spn}&apikey={api_key}"
-                response = requests.get(map_request)
-                map_file = "map.png"
-                with open(map_file, "wb") as file:
-                    file.write(response.content)
-                screen.blit(pygame.image.load(map_file), (0, 0))
             elif event.key == pygame.K_DOWN:
                 l2 -= LAT_STEP * math.pow(2, 15 - spn1)
-                ll_spn = f'll={l1},{l2}&spn={spn1}'
+            #print(l1, l2)
+            if l1 > -199 and l1 < 206 and l2 < 161 and l2 > -101:
+                ll_spn = f'll={l1},{l2}&z={spn1}&size=600,450'
                 map_request = f"{server_address}{ll_spn}&apikey={api_key}"
                 response = requests.get(map_request)
                 map_file = "map.png"
