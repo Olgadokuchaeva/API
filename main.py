@@ -11,7 +11,7 @@ api_key = 'f3a0fe3a-b07e-4840-a1da-06f18b2ddf13'
 l1 = float(input())
 l2 = float(input())
 
-spn1 = float(input())
+spn1 = int(input())
 ll_spn = f'll={l1},{l2}&spn={spn1}'
 # Готовим запрос.
 
@@ -49,7 +49,7 @@ while running:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 l1 -= LON_STEP * math.pow(2, 15 - spn1)
-                ll_spn = f'll={l1},{l2}&spn={spn1},{spn1}'
+                ll_spn = f'll={l1},{l2}&spn={spn1}'
                 map_request = f"{server_address}{ll_spn}&apikey={api_key}"
                 response = requests.get(map_request)
                 map_file = "map.png"
@@ -58,7 +58,7 @@ while running:
                 screen.blit(pygame.image.load(map_file), (0, 0))
             elif event.key == pygame.K_RIGHT:
                 l1 += LON_STEP * math.pow(2, 15 - spn1)
-                ll_spn = f'll={l1},{l2}&spn={spn1},{spn1}'
+                ll_spn = f'll={l1},{l2}&spn={spn1}'
                 map_request = f"{server_address}{ll_spn}&apikey={api_key}"
                 response = requests.get(map_request)
                 map_file = "map.png"
@@ -67,7 +67,7 @@ while running:
                 screen.blit(pygame.image.load(map_file), (0, 0))
             elif event.key == pygame.K_UP:
                 l2 += LAT_STEP * math.pow(2, 15 - spn1)
-                ll_spn = f'll={l1},{l2}&spn={spn1},{spn1}'
+                ll_spn = f'll={l1},{l2}&spn={spn1}'
                 map_request = f"{server_address}{ll_spn}&apikey={api_key}"
                 response = requests.get(map_request)
                 map_file = "map.png"
@@ -76,7 +76,7 @@ while running:
                 screen.blit(pygame.image.load(map_file), (0, 0))
             elif event.key == pygame.K_DOWN:
                 l2 -= LAT_STEP * math.pow(2, 15 - spn1)
-                ll_spn = f'll={l1},{l2}&spn={spn1},{spn1}'
+                ll_spn = f'll={l1},{l2}&spn={spn1}'
                 map_request = f"{server_address}{ll_spn}&apikey={api_key}"
                 response = requests.get(map_request)
                 map_file = "map.png"
