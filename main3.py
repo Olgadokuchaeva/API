@@ -54,8 +54,14 @@ while running:
                 l2 += LAT_STEP * math.pow(2, 15 - spn1)
             elif event.key == pygame.K_DOWN:
                 l2 -= LAT_STEP * math.pow(2, 15 - spn1)
-            map_file = get_image(l1, l2, spn1)
-            screen.blit(pygame.image.load(map_file), (0, 0))
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 4:
+            if spn1 < 21:  # Page_UP
+                spn1 += 1
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 5:
+            if spn1 > 0:  # Page_DOWN
+                spn1 -= 1
+        map_file = get_image(l1, l2, spn1)
+        screen.blit(pygame.image.load(map_file), (0, 0))
     pygame.display.flip()
 
 pygame.quit()
