@@ -10,8 +10,7 @@ api_key = 'f3a0fe3a-b07e-4840-a1da-06f18b2ddf13'
 l1 = float(input())
 l2 = float(input())
 
-spn1 = float(input())
-spn2 = float(input())
+spn1, spn2 = [float(i) for i in input().split()]
 ll_spn = f'll={l1},{l2}&spn={spn1},{spn2}'
 # Готовим запрос.
 
